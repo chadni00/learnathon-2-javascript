@@ -1,0 +1,268 @@
+//3 type variable -> var,let,const
+
+// Var
+
+// var name;
+// name = "Chadni";
+// console.log(name);
+
+
+ var name = "Jahani Shabnam Chadni";
+ console.log(name);
+
+
+
+x = 5;
+y = 6;
+z = x + y;
+console.log(z);
+
+
+
+//##
+
+var number = 50;
+
+function print() {
+    var square = number + number ;
+    console.log(square);
+
+}
+console.log(number);   //50
+print()  //100
+
+
+
+//##
+
+//  var number = 50;
+//  var square = number + number ;
+//  console.log(square);   //out->100
+
+ var number = 50;
+ var number = 40;     //var can be redeclared
+ var square = number + number ;
+console.log(square);         // out-> 80
+
+
+
+
+
+
+// Let  can not be redeclared
+
+ let number1 = 50;
+ //let number1 = 40;             //again can not be declared  to error dibe
+ let square1 = number1 + number1 ;
+console.log(square1);           // so, out-> 100
+
+
+let number2 = 60;
+number2 = 80;                   // but same name use kore reassign korte parbe 
+let square2 = number2 + number2 ;
+console.log(square2);           // so, out-> 160
+
+
+
+
+
+//Const
+
+const number3 = 20;
+//const number3 = 20;         //again can not be declared  to error dibe
+//number3 = 10;               // also can not reassign w8 same name
+const square3 = number3 + number3 ;
+console.log(square3);         // so, out-> 100
+
+
+
+//const PI = 3.14;    //correct
+
+//const PI;      //incorrect
+//PI = 3.14;
+
+
+
+
+//##### block scope
+
+/*
+{
+    let x =2;
+}
+*/
+
+
+
+
+
+// js data type
+
+
+//primitive
+// numbers
+// let length = 12;
+// let weight = 40;
+
+// // String 
+// let color = "Blue";
+// let lastname = "Shabnam";
+
+// //Booleans
+// let a = true;
+// let b = false;
+
+
+
+// //non primitive
+// //object
+// const person = {firstname : "Jahani" , lastname : "Chadni"};
+
+
+// //Array object
+// const cars = ("saab", "volvo" ,"BMW" );
+
+// //date object
+// const date = new Date ("2001-01-03");
+
+
+
+
+// let x ;          // x is undefined
+// x = 5 ;         // x is a number
+// x = "chadni"   // x is a string
+
+
+
+// check data type
+const nam = typeof "Chadni";
+console.log(nam);      // out-> string
+
+
+
+
+//Statement
+
+let a = 2;
+if(a == 2){
+    console.log("test");     //out ->test
+
+}
+
+
+//#####  for loop
+
+//nested 
+
+for (let i = 0; i < 5; i++){
+    for(let j = 0; j < 5; j++){
+        console.log(i , j);
+    }
+}
+
+
+// for(;;){                          //infinite loop cz no condition
+//     console.log("print");    
+
+// }
+
+
+
+
+
+ let text = "";
+for(let i = 0; i < 10; i++){
+     if(i==3) {continue;}
+     text += "the number is " + i + "<br>" ;   //2nd line e to jache na same line e thakche <br> o print hocche
+ }
+ console.log(text);
+
+
+
+
+//  function
+
+function functionTwo() {
+    console.log("Hellow !!!");
+}
+functionTwo();
+
+
+
+function functionA(a,b) {                //parameter
+    console.log(a,b);
+}
+functionA("chadni", "EWU");               //argument
+
+
+
+
+
+
+// // code thik ache ? 
+
+// function functionB(a,b) {       
+//    return a + " " + b;                                  // return kore dibe
+// }
+// functionB("chadni", "Viqi");  
+
+
+
+// var func = function functionC(a,b) {               // function expression er madhome store
+//     return a + " " + b;    
+        
+// };
+// // functionC("chadni", "Viqi");  
+// func("chadni", "Viqi");
+
+
+
+// //Arrow function
+
+// const functionD = (a,b) => {
+//     return a + " " + b ;  
+// }
+// functionD("jahani", "Viqi"); 
+
+
+// //ai 3 ta code thik ache ?
+
+
+
+
+var func = function functionC(a,b) {               // function expression er madhome store
+    // return a + " " + b;    
+    console.log(a,b);      
+ };
+ // functionC("chadni", "Viqi");  
+ func("chadni", "Viqi");
+
+
+
+//Arrow function
+
+const functionD = (a,b) => {
+   // return a + " " + b;    
+   console.log(a,b); 
+}
+functionD("jahani", "Viqi"); 
+
+
+
+
+
+//video part 2
+
+//scope
+
+
+const globalVariable = ' I am global variable .';
+console.log(globalVariable);
+
+var myFunc = function () {
+    console.log(globalVariable);
+
+};
+myFunc();
+
+
