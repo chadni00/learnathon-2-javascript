@@ -251,18 +251,202 @@ functionD("jahani", "Viqi");
 
 
 
+
+
+
 //video part 2
 
 //scope
 
 
-const globalVariable = ' I am global variable .';
-console.log(globalVariable);
+//#
+// var myFunc = function () {
+//     var localVariable = ' I am local variable .';            //scope er moddhe ache tai var dia declare kora 
+    
+// };
+
+// console.log(localVariable);                                 // tai fun er baire call korle variable access korte parbe na
+
+
+
+
+
+//##
+var localVariable2 = ' I am local variable out.';             //jehetu baire declare kora to pabe access 
 
 var myFunc = function () {
-    console.log(globalVariable);
+    var localVariable2 = ' I am local variable .';
+    
+};
+console.log(localVariable2);                           // out ->  I am local variable out.
 
+
+
+//###
+
+let localVariable = ' I am local variable out.';             
+
+var myFunc = function () {
+    var localVariable = ' I am local variable var .';
+
+    console.log(localVariable);                         // out-> fun er modher ta dibe cz func call kora hoise ;I am local variable var.
 };
 myFunc();
+       
+
+//####
+let localVariable1 = ' I am local variable out.';             
+
+var myFunc = function () {
+    let localVariable1 = ' I am local variable let.';
+
+    console.log(localVariable1);                         // out-> let var ja e dew hok na kno func or local scope er vhitor er ta nibe ;
+
+};                                                       //I am local variable let .
+myFunc();
+
+
+
+
+
+
+
+
+// parent scope child scope means ekta func er moddhe ar ek ta func;
+
+
+function outerFunc(a) {                                                   //parent scope
+    var outerFuncVariable = 'Hi there ,I am outer';
+
+    console.log(outerFuncVariable);                                      // out-> Hi there ,I am outer     
+    
+
+        function innerFunc() {                                          // child scope  / 2nd func  /local scope
+           var innerFuncVariable = 'Hi there , I am inner';
+           console.log(innerFuncVariable);                             // out-> Hi there , I am inner
+        }
+        innerFunc();
+
+
+    //console.log(innerFuncVariable);               //undefined  cz child scope er baire call kora hoise parent scope child scope er variable er access pabe na
+}
+ 
+outerFunc('function variable');
+
+
+
+
+
+
+
+/*  js hoisting
+
+
+// var
+var name = "vivasoft";
+console.log(name3);
+
+console.log(name3);           //var undefined  set kore rakhe jehetu age console kora hoise pore declare kora hoise
+var name = "vivasoft";
+console.log(name3);                    // abr call kora hole nibe cz redeclare kora jai
+
+                     
+
+//let
+console.log(name3);           //let undefined  set kore rakhe na age console kore pore declare korle o so reference error dai
+let name = "vivasoft";
+ 
+
+//const
+console.log(name3);           //const undefined  set kore rakhe na age console kore pore declare korle o so syntax error dai
+let name = "vivasoft";
+ 
+                             */
+
+
+
+
+
+
+//   Execution context
+
+
+var name = "chadni jahani";            //1  
+
+function first() {                     //2  ref
+    var wel = "hello";                 //6
+    second();                          //7
+    console.log(wel + name)            //13
+
+}                                          //  3 ta func execution context create hoise ai 3ta k rakha r jonno ar ekta global total 4 ta create 
+function second() {                    //3
+    var wel1 = "hiii";                 //8
+    third();                           //9
+    console.log(wel1 + name)           //12
+
+}
+function third() {                     //4
+    var wel2 = "heyyyy";               //10
+    console.log(wel2 + name)           //11
+
+}                         
+
+first();                               //5
+ 
+//out_--  -->                 heyyyychadni jahani
+                           // hiiichadni jahani
+                           // hellochadni jahani                       
+                           
+                           
+                           //global execution context follow kore  first in last out (FILO)
+
+
+
+
+
+
+
+
+//      ### polyfilling
+
+
+//console.log(Function.mybind)
+
+let namee = { 
+    firstName: 'Chadni',
+    lastName: "Shabnam"
+
+}
+
+let getName=function(){
+
+    console.log(this.firstName + ' ' + this.lastName)
+
+}
+
+let getFullName = getName.bind(namee)
+
+getFullName();
+
+//bind function
+
+
+
+Function.prototype.mybind = function(namee){ 
+    let obj = this
+    return function(){ 
+        obj.call(namee) 
+    }
+
+}
+
+let getPotoFullName = getName.mybind(namee)
+
+getPotoFullName();
+
+                          
+
+
+
 
 
