@@ -1,0 +1,227 @@
+/*console.log('welcome to class 4');
+
+
+console.log('first');
+console.log('second');
+setTimeout(() => {                                   // asynchronous function 
+    console.log('third');
+
+    
+}, 0);
+
+console.log('fourth');                                // out -> first second fourth third  sequentially  hoi nai 
+
+*/
+
+
+
+//----------------------------------------------------------------
+//                     Call Stack
+//console.log('first');
+//console.log('second');
+/*setTimeout(() => {                                   // asynchronous function -> call back queue te pathabe 
+
+    console.log('third');                            
+
+    
+}, 0);*/
+
+//console.log('fourth');  
+
+//console.log('third');                         // call back queue call stack e pathalo
+
+//                        |
+//                        |
+
+//                    event loop
+                        
+//                        |
+//                        |
+//-----------------------------------------------------------------
+//                    call back queue
+
+/*setTimeout(() => {                                   // asynchronous function 
+    console.log('third');
+
+    
+}, 0);*/
+
+//--------------------------------------------------------
+//                    output
+//first  
+//second  
+//fourth
+//third
+
+
+/*
+setTimeout(() => {                                   // asynchronous function 
+    console.log('hello js');
+},3000);                                    //3 se so pore
+
+setTimeout(() => {                                   
+    console.log('hello jsc');
+},1000);                                   //1sec so age jabe
+*/
+
+
+
+
+
+//const mytdo = fetch('https://jsonplaceholder.typicode.com/todos/1')             
+//console.log('mytdo::::',mytdo);    
+     
+
+
+
+
+/*   ------------------------------------------------------------------
+
+//----- --------promise creation phase  creating
+
+const myPromise = new Promise((resolve, reject) => {
+    const num = Math.ceil(Math.random()*100);
+    if (num % 2 == 0) {
+        resolve({
+            name : 'chadni',
+            email: 'jahanichadni18@gmail.com',
+            location: "dhaka",
+        });
+
+    }else{
+        reject('odd number will not provide the data .');
+    }
+});
+
+
+//promise creation phase consuming
+
+myPromise
+.then((data)=> {
+    console.log('User Data:::',data);
+
+})
+
+.catch((errmsg)=> {
+    console.error(errmsg);
+
+
+})
+*/
+
+
+
+//----- promise creation phase  creating  with chaining part 
+
+const myPromise = new Promise((resolve, reject) => {
+    const num = Math.ceil(Math.random()*100);
+    if (num % 2 == 0) {
+        resolve(JSON.stringify({                // json stringfy use korate age obejct hisabe output dichilo ekhn srting e dibe 
+            name : 'chadni',
+            email: 'jahanichadni18@gmail.com',
+            location: "dhaka",
+            age : 23,
+        }));
+
+    }else{
+        reject('odd number will not provide the data .');
+    }
+});
+
+
+//promise creation phase consuming
+
+myPromise
+  .then((data) => {
+    return JSON.parse(data);                    //string e change korate ekhn ai asynchronous (prase) use kore object e chenge kora hoise
+                                                 //return use korate return  korbe 2nd then e
+})
+  .then((result) => {                             // e khane return korbe object  hishabe     
+    console.log(result);   
+    return result.age + 5;                   
+
+})
+  .then((age) => {
+    console.log('Age of chadni :', age);                 // multiple then use kora jabe 
+  })
+
+
+.catch((errmsg)=> {                                   // jai then theke error throw kora hok na kno catch er vhitore ashbe ,,multiple catch use kora jabe na ektai catch use korte hobe 
+    console.error(errmsg);
+
+
+})
+
+
+
+//-----------------------------------------------------------------------
+
+
+
+
+
+//---------------------  Multiple promise -----------------
+
+
+const promise1 = fetch('https://jsonplaceholder.typicode.com/todos/1')      
+const promise2 = fetch('https://jsonplaceholder.typicode.com/posts/1')      
+const promise3 = fetch('https://jsonplaceholder.typicode.com/comments/1')      
+  
+
+Promise.all([promise1,promise2,promise3,myPromise])
+ .then((result) => {
+    console.log('Promise.all::::', result);
+
+ })
+
+ .catch((err) => {
+    console.log('Promise.all::::', err);
+
+ });
+
+
+
+ Promise.any([promise1,promise2,promise3,myPromise])
+ .then((result) => {
+    console.log('Promise.any::::', result);
+
+ })
+
+ .catch((err) => {
+    console.log('Promise.any::::', err);
+
+ });
+
+
+
+ Promise.allSettled([promise1,promise2,promise3,myPromise])
+ .then((result) => {
+    console.log('Promise.allSettled::::', result);
+
+ })
+
+ .catch((err) => {
+    console.log('Promise.allSettled::::', err);
+
+ });
+
+
+
+ Promise.race([promise1,promise2,promise3,myPromise])
+ .then((result) => {
+    console.log('Promise.race::::', result);
+
+ })
+
+ .catch((err) => {
+    console.log('Promise.race::::', err);
+
+ });
+
+ //---------------------------------------- END  promise------------------------------------
+
+
+
+ // -------------------------------Async/await
+ 
+
